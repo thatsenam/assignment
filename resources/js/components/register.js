@@ -23,7 +23,6 @@ function Register() {
 
     const onFinish = (values) => {
         console.log('Success:', values);
-
          axios.post("api/register", values).then((response) => {
             console.log(response.data)
             setShowResults(true);
