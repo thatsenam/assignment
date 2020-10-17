@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "antd": "^4.7.0",
-        "react-router-dom": "^5.2.0"
+        "react-router-dom": "^5.2.0",
+        "use-state-if-mounted": "^1.0.4"
     }
 }

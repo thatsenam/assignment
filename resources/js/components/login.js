@@ -21,16 +21,22 @@ const tailLayout = {
 const Login = () => {
 
     const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('token') !== null)
-    console.log(loggedIn,localStorage.getItem('token'))
+    console.log(loggedIn, localStorage.getItem('token'))
 
     const onFinish = (values) => {
         console.log('Success:', values);
         axios.post("api/login", values).then((response) => {
             console.log(response.data)
             // setShowResults(true);
-            localStorage.setItem('token', response.data.token);
-            setLoggedIn(true);
-            this.props.history.push('/profile')
+            let token = response.data.token;
+            if (token) {
+                localStorage.setItem('token', token);
+                setLoggedIn(true);
+                this.props.history.push('/profile')
+            }
+            console.log(response.data)
+
+
         }).catch((e) => {
             console.log(e)
 

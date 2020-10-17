@@ -57,7 +57,7 @@ function Home() {
                 <div className="card text-center">
                     <div className="card-header"><h2>Welcome to Enam's Assignment</h2></div>
                     <div className="card-body">You have to <Link to="/login">Login</Link> or <Link
-                        to="/register">Register</Link> to view secret content
+                        to="/register">Register</Link> to view secret content. blah
                     </div>
                 </div>
             </div>
@@ -65,13 +65,7 @@ function Home() {
     </div>;
 }
 
-function About() {
-    return <h2>About</h2>;
-}
 
-function Users() {
-    return <h2>Users</h2>;
-}
 
 export default App;
 
