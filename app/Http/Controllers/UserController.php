@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new App\User();
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->save();
+
+        return $user;
+
     }
 
     /**
@@ -61,9 +68,18 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        if ($user) {
+//            dd($request->all());
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->save();
+            return response()->json($user);
+        }
+
+        return response()->json(['message' => 'User not found!'], 404);
     }
 
     /**
@@ -86,6 +102,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $destroy = User::destroy($id);
+        if ($destroy) {
+            return response()->json($destroy);
+        }
     }
 }
